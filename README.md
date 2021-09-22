@@ -9,11 +9,11 @@
  ---
  
 ## MainActivity.java
-<img src="https://github.com/Travel-MY/Assignment_BMI-Calculator/blob/feature/reamde-format/ReadMe-Assets/MainActivity_java.png" width="600">
+<img src="https://github.com/Travel-MY/Assignment_BMI-Calculator/blob/master/ReadMe-Assets/MainActivity_java.png" width="600">
 
  ---
  
 ## activity_main.xml
-<img src="https://github.com/Travel-MY/Assignment_BMI-Calculator/blob/feature/reamde-format/ReadMe-Assets/Acitivity_main_xml.png" width="600">
+<img src="https://github.com/Travel-MY/Assignment_BMI-Calculator/blob/master/ReadMe-Assets/Acitivity_main_xml.png" width="600">
 
 
