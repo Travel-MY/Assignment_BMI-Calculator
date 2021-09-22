@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -14,15 +13,15 @@ public class MainActivity extends AppCompatActivity {
     private SeekBar height;
     private SeekBar weight;
     private Button calculate;
-    private TextView currentheight;
-    private TextView currentweight;
-    private TextView totalresult;
+    private TextView currentHeight;
+    private TextView currentWeight;
+    private TextView totalResult;
 
 
     private double bmi;
-    private double valueheight;
-    private double valueweight;
-    private String resulttotal;
+    private double valueHeight;
+    private double valueWeight;
+    private String resultTotal;
 
 
     @SuppressLint("DefaultLocale")
@@ -31,76 +30,67 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Get UI Components ID
         height = findViewById(R.id.heightseekbar);
         weight = findViewById(R.id.wightseekbar);
         calculate = findViewById(R.id.calculatebmi);
-        currentheight = findViewById(R.id.current_height);
-        currentweight = findViewById(R.id.current_weight);
-        totalresult = findViewById(R.id.result);
+        currentHeight = findViewById(R.id.current_height);
+        currentWeight = findViewById(R.id.current_weight);
+        totalResult = findViewById(R.id.result);
 
         //function seekbar for height with the max
         height.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                currentheight.setText(String.valueOf(height.getProgress()));
-                height.setMax(300);
+                currentHeight.setText(String.valueOf(height.getProgress()));
+                height.setMax(200);
             }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) { }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
+            public void onStopTrackingTouch(SeekBar seekBar) { }
         });
 
         //function seekbar for weight with the max
         weight.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                currentweight.setText(String.valueOf(weight.getProgress()));
+                currentWeight.setText(String.valueOf(weight.getProgress()));
                 weight.setMax(300);
             }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) { }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
+            public void onStopTrackingTouch(SeekBar seekBar) { }
         });
 
-        //BMiCalculator
+        //Calculate BMI
         calculate.setOnClickListener(v -> {
-            valueheight = Double.parseDouble(currentheight.getText().toString());
-            valueweight = Double.parseDouble(currentweight.getText().toString());
-            Double valueheightmeters;
+            valueHeight = Double.parseDouble(currentHeight.getText().toString());
+            valueWeight = Double.parseDouble(currentWeight.getText().toString());
+            Double valueHeightMeters;
 
             //BMI Formula
 
-            valueheightmeters = valueheight / 100;
-            bmi = (valueweight / (valueheightmeters * valueheightmeters));
+            valueHeightMeters = valueHeight / 100;
+            bmi = (valueWeight / (valueHeightMeters * valueHeightMeters));
 
 
             if (bmi >= 30) { /* obese */
-                resulttotal = String.format("%.2f", bmi) + "\nOBESE";
-                totalresult.setText(resulttotal);
+                resultTotal = String.format("%.2f", bmi) + "\nOBESE";
+                totalResult.setText(resultTotal);
             } else if (bmi >= 25) {
-                resulttotal = String.format("%.2f", bmi) + "\nOVERWEIGHT";
-                totalresult.setText(resulttotal);
+                resultTotal = String.format("%.2f", bmi) + "\nOVERWEIGHT";
+                totalResult.setText(resultTotal);
             } else if (bmi >= 18.5) {
-                resulttotal = String.format("%.2f", bmi) + "\nIDEAL";
-                totalresult.setText(resulttotal);
+                resultTotal = String.format("%.2f", bmi) + "\nIDEAL";
+                totalResult.setText(resultTotal);
             } else {
-                resulttotal = String.format("%.2f", bmi) + "\nUNDERWEIGHT";
-                totalresult.setText(resulttotal);
+                resultTotal = String.format("%.2f", bmi) + "\nUNDERWEIGHT";
+                totalResult.setText(resultTotal);
             }
         });
     }
